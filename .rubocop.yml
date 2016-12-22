@@ -6,3 +6,10 @@ LineLength:
 
 AssignmentInCondition:
   Enabled: false
+
+MethodLength:
+  Max: 50
+
+AllCops:
+  Excludes:
+    - db/**/*
