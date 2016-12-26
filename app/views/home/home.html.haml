@@ -1,20 +1,18 @@
-.pusher
-  .ui.inverted.vertical.masthead.center.aligned.segment
-    .ui.container
-      .ui.large.secondary.inverted.pointing.menu
-        %a.toc.item
-          %i.sidebar.icon
-        %a.active.item Home
-        %a.item Link1
-        %a.item Link2
-        %a.item Link3
-        .right.item
-          %a.ui.inverted.button Log in
-          %a.ui.inverted.button Sign Up
-    .ui.text.container
-      %h1.ui.inverted.header
-        Gamification
-      %h2 Slogan
-      .ui.huge.primary.button
-        Get Started
-        %i.right.arrow.icon
+.container
+  .jumbotron
+    - if user_signed_in?
+      %h1 Welcome back, trusted user!
+      %p.lead
+        You have signed in!  If this were a real app some sweet conent
+        would go here.  But it's just a test.  You might want to sign out now.
+      = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-large btn-danger'
+    - else
+      %h1 Welcome, new user!
+      %p.lead
+        You must sign in or sign up before you can access our super sweet,
+        top secret content.
+      .row-fluid
+        .span6
+          = link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
+        .span6
+          = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success'
