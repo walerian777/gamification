@@ -24,6 +24,7 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
+gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # Use Redis adapter to run Action Cable in production
