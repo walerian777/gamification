@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'home#home'
+
+  devise_for :users
+
+  resources :users
+
+  get 'me', to: 'users#me'
 end
