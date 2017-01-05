@@ -40,6 +40,11 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     ast (2.3.0)
+    awesome_print (1.7.0)
+    awesome_rails_console (0.4.0)
+      awesome_print
+      pry-rails
+      railties
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -242,6 +247,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_rails_console
   better_errors
   binding_of_caller
   cancancan
@@ -256,7 +262,6 @@ DEPENDENCIES
   listen (~> 3.0.5)
   omniauth
   pg (~> 0.18)
-  pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
   rspec-rails (~> 3.5)

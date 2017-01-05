@@ -38,10 +38,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_rails_console'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'
-  gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
