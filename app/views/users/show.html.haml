@@ -9,5 +9,30 @@
         .profile-usertitle-job
           Key Account Manager
       .profile-userbuttons
-        %button.btn.btn-success.btn-sm{ type: 'button' } Follow
-        %button.btn.btn-danger.btn-sm{ type: 'button' } Message
+        %button.btn.btn-success.btn-sm{ type: 'button' }
+          %i.fa.fa-check
+          Follow
+        %button.btn.btn-danger.btn-sm{ type: 'button' }
+          %i.fa.fa-envelope
+          Message
+      .profile-usermenu
+        %ul.nav
+          %li.active
+            %a{ href: '#' }
+              %i.fa.fa-line-chart
+              Activity
+          %li
+            %a{ href: '#' }
+              %i.fa.fa-user
+              Profile
+          %li
+            %a{ href: '#' }
+              %i.fa.fa-trophy
+              Achievements
+          %li
+            %a{ href: '#' }
+              %i.fa.fa-group
+              Teams
+  .col-md-9
+    .profile-content
+      Some user related content goes here...
