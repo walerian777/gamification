@@ -34,6 +34,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.5'
 end
 
@@ -48,6 +49,5 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end
