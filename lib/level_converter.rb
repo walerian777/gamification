@@ -11,6 +11,6 @@ class LevelConverter
   end
 
   def reverse
-    (0.5 * (@level ** 2 + @level) - @level) * EXPERIENCE_GAP
+    (0.5 * (@level**2 + @level) - @level) * EXPERIENCE_GAP
   end
 end
