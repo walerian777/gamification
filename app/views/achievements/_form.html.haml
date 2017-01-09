@@ -1,0 +1,25 @@
+.row
+  .col-md-6.col-md-offset-3
+    = simple_form_for @match do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :competition, autofocus: true, collection: [['League', 'league'], ['Friendly', 'friendly']], default: 1, input_html: { onchange: 'setCompetition(this)' }
+        #league-id
+          = f.input :league_id, include_blank: 'Select a league', collection: League.all.collect {|l| ["#{l.name} (#{l.league_type.capitalize} #{l.sport.name.downcase})", l.id]}
+        #sport-id{style: 'display: none;'}
+          = f.input :sport_id, required: true, autofocus: true, include_blank: 'Select a discipline', collection: Sport.all.collect {|s| [s.name, s.id]}
+        = f.input :match_type, id: 'match_type_input', required: true, collection: [['Teams match', 'teams'], ['Solo match', 'solo']], default: 1, input_html: { onchange: 'showMatchSides(this)' }
+        #teams-sides
+          = f.input :home_team_id, include_blank: 'Select a home team', collection: Team.all.order(:name).collect {|t| ["#{t.name} #{t.city}", t.id]}
+          = f.input :away_team_id, include_blank: 'Select an away team', collection: Team.all.order(:name).collect {|t| ["#{t.name} #{t.city}", t.id]}
+        #sportsmen-sides{style: 'display: none;'}
+          = f.input :home_sportsman_id, include_blank: 'Select a home sportsman', collection: Sportsman.all.order(:surname).collect {|s| ["#{s.name} #{s.surname}", s.id]}
+          = f.input :away_sportsman_id, include_blank: 'Select an away sportsman', collection: Sportsman.all.order(:surname).collect {|s| ["#{s.name} #{s.surname}", s.id]}
+        :javascript
+          showMatchSides(document.getElementById('match_match_type'));
+          setCompetition(document.getElementById('match_competition'));
+        = f.input :home_score, required: true
+        = f.input :away_score, required: true
+        = f.input :played_at, as: :datetime, start_year: Date.today.year - 1, end_year: Date.today.year
+      .form-actions
+        = f.button :submit, 'Save changes'

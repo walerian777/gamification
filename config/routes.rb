@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
+  resources :achievements
 
   get 'me', to: 'users#me'
 end

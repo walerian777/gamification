@@ -1,0 +1,25 @@
+%h1
+  Listing achievements
+
+%table.table.table-striped.pretty
+  %thead
+    %tr
+      %th Name
+      %th Rank
+      %th Rewards
+      %th{ colspan: 3 }
+  %tbody
+    - @achievements.each do |achievement|
+      %tr
+        %td
+          = achievement.name
+        %td
+          %i.fa.fa-trophy{ style: icon_style(achievement) }
+        %td= achievement.rewards
+        %td= link_to 'Show', achievement
+        %td= link_to 'Edit', edit_achievement_path(achievement) if can? :update, achievement
+        %td= link_to 'Remove', achievement, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, achievement
+
+%p= will_paginate @achievements, renderer: BootstrapPagination::Rails
+
+= link_to 'New achievement', new_achievement_path, class: 'btn btn-primary' if can? :create, Achievement

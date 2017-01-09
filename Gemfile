@@ -22,10 +22,12 @@ gem 'omniauth'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate-bootstrap'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

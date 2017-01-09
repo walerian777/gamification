@@ -5,7 +5,7 @@ class Achievement < ApplicationRecord
     'gold' => 120
   }.freeze
 
-  validates :name, :rank, presence: true
+  validates :name, :rank, :description, presence: true
   validates :name, :rank, :rewards, length: { maximum: 255 }
   validates :points,
             numericality: { only_integer: true, greater_than: 0 }, allow_nil: true

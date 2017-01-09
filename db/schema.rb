@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170108153402) do
 
   create_table "achievements", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name",                           null: false
-    t.text     "description"
+    t.text     "description",                    null: false
     t.string   "rank",        default: "bronze", null: false
     t.integer  "points",                         null: false
     t.string   "rewards"
