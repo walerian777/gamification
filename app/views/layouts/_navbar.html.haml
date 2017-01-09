@@ -13,14 +13,10 @@
           %li
             = link_to 'Achievements', achievements_path
           %li
-            %a Item
-          %li
-            %a Item
-          %li
-            %a Item
+            %a Teams
           - if current_user.admin?
             %li
-              = link_to 'Grant an achivement', new_achievement_user_path
+              = link_to 'Grant an achievement', new_achievements_user_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           - if user_signed_in?

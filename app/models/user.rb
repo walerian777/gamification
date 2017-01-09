@@ -11,6 +11,10 @@ class User < ApplicationRecord
   before_save :level_up, if: proc { |a| a.experience_changed? || a.new_record? }
   before_create :assign_nickname
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def level_up
