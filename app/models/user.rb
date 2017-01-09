@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable, :confirmable, :encryptable,
          :omniauthable
 
-  before_save :level_up, if: :experience_changed?
+  before_save :level_up, if: proc { |a| a.experience_changed? || a.new_record? }
 
   private
 
