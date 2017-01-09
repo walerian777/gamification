@@ -1,4 +1,7 @@
 class AchievementsController < ApplicationController
+  respond_to :html
+  load_and_authorize_resource
+
   def index
     @achievements = Achievement.order(:created_at)
                                .paginate(page: params[:page], per_page: 10)
@@ -6,20 +9,24 @@ class AchievementsController < ApplicationController
 
   def show
     @achievement = Achievement.find(params[:id])
+    respond_with(@achievements)
   end
 
   def new
     @achievement = Achievement.new
+    respond_with(@achievement)
   end
 
   def edit
     @achievement = Achievement.find(params[:id])
+    respond_with(@achievement)
   end
 
   def create
     @achievement = Achievement.new(achievement_params)
     if @achievement.save
       flash[:notice] = 'Achievement saved!'
+      respond_with(@achievement)
     else
       render action: :new
     end
@@ -28,11 +35,13 @@ class AchievementsController < ApplicationController
   def update
     @achievement = Achievement.find(params[:id])
     @achievement.update(achievement_params)
+    respond_with(@achievement)
   end
 
   def destroy
     @achievement = Achievement.find(params[:id])
     @achievement.destroy
+    respond_with(@achievement)
   end
 
   private

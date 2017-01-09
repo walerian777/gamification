@@ -13,3 +13,4 @@ MethodLength:
 AllCops:
   Excludes:
     - db/**/*
+    - config/initializers/simple_form_bootstrap.rb

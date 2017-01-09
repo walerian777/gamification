@@ -1,0 +1,11 @@
+.row
+  .col-md-12
+    %h2
+      %i.fa.fa-trophy{ style: icon_style(@achievement) }
+      = @achievement.name
+    %h3= @achievement.description
+    %p
+      Rewards:
+      = @achievement.rewards
+
+= link_to 'Back', achievements_path

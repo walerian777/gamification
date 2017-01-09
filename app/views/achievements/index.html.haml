@@ -1,19 +1,21 @@
-%h1
-  Listing achievements
+%h1 Listing achievements
 
 %table.table.table-striped.pretty
   %thead
     %tr
       %th Name
-      %th Rank
+      %th Points
       %th Rewards
       %th{ colspan: 3 }
   %tbody
     - @achievements.each do |achievement|
       %tr
         %td
-          = achievement.name
+          %b= achievement.name
+          %p.small
+            = truncate(achievement.description, length: 80, separator: ' ')
         %td
+          = achievement.points
           %i.fa.fa-trophy{ style: icon_style(achievement) }
         %td= achievement.rewards
         %td= link_to 'Show', achievement
