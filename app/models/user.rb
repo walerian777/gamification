@@ -3,6 +3,9 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable, :confirmable, :encryptable,
          :omniauthable
 
+  has_many :achievements_users
+  has_many :achievements, through: :achievements_users
+
   validates :first_name, :last_name, presence: true
 
   before_save :level_up, if: proc { |a| a.experience_changed? || a.new_record? }

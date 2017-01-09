@@ -5,6 +5,9 @@ class Achievement < ApplicationRecord
     'gold' => 120
   }.freeze
 
+  has_many :achievements_users
+  has_many :users, through: :achievements_users
+
   validates :name, :rank, :description, presence: true
   validates :name, :rank, :rewards, length: { maximum: 255 }
   validates :points,
