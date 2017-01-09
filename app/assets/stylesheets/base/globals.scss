@@ -7,3 +7,9 @@
   font-size: 0.85em;
   color: grey;
 }
+
+abbr[title] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+}

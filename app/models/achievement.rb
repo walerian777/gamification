@@ -11,11 +11,11 @@ class Achievement < ApplicationRecord
             numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :rank, inclusion: { in: RANKS.keys }
 
-  before_validation :set_points, if: proc { |a| a.rank_changed? || a.new_record? }
+  before_validation :assign_points, if: proc { |a| a.rank_changed? || a.new_record? }
 
   private
 
-  def set_points
+  def assign_points
     self.points = RANKS[rank]
   end
 end

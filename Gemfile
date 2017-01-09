@@ -36,7 +36,8 @@ gem 'will_paginate-bootstrap'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.5', require: 'rspec/rails'
 end
 
 group :development do
@@ -50,6 +51,5 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end
