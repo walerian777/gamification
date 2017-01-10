@@ -3,12 +3,12 @@ class AchievementsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @achievements = Achievement.order(:created_at)
+    @achievements = Achievement.active.order(:created_at)
                                .paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @achievement = Achievement.find(params[:id])
+    @achievement = Achievement.active.find(params[:id])
     respond_with(@achievements)
   end
 
@@ -18,7 +18,7 @@ class AchievementsController < ApplicationController
   end
 
   def edit
-    @achievement = Achievement.find(params[:id])
+    @achievement = Achievement.active.find(params[:id])
     respond_with(@achievement)
   end
 
@@ -33,13 +33,13 @@ class AchievementsController < ApplicationController
   end
 
   def update
-    @achievement = Achievement.find(params[:id])
+    @achievement = Achievement.active.find(params[:id])
     @achievement.update(achievement_params)
     respond_with(@achievement)
   end
 
   def destroy
-    @achievement = Achievement.find(params[:id])
+    @achievement = Achievement.active.find(params[:id])
     @achievement.destroy
     respond_with(@achievement)
   end

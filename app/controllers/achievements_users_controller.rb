@@ -4,8 +4,8 @@ class AchievementsUsersController < ApplicationController
 
   def new
     @achievements_user = AchievementsUser.new
-    @achievements = Achievement.order(:name)
-    @users = User.order(:last_name)
+    @achievements = Achievement.active.order(:name)
+    @users = User.active.order(:last_name)
     respond_with(@achievements_user)
   end
 
@@ -20,7 +20,7 @@ class AchievementsUsersController < ApplicationController
   end
 
   def destroy
-    @achievements_user = AchievementsUser.find(params[:id])
+    @achievements_user = AchievementsUser.active.find(params[:id])
     @achievements_user.destroy
     respond_with(@achievements_user)
   end
