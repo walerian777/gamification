@@ -3,8 +3,10 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable, :confirmable, :encryptable,
          :omniauthable
 
-  has_many :achievements_users
+  has_many :achievements_users, dependent: :destroy
   has_many :achievements, through: :achievements_users
+  has_many :teams_users, dependent: :destroy
+  has_many :teams, through: :teams_users
 
   validates :first_name, :last_name, presence: true
 

@@ -5,7 +5,7 @@ class Achievement < ApplicationRecord
     'gold' => 120
   }.freeze
 
-  has_many :achievements_users
+  has_many :achievements_users, dependent: :destroy
   has_many :users, through: :achievements_users
 
   validates :name, :rank, :description, presence: true
