@@ -13,7 +13,7 @@
           %li
             = link_to 'Achievements', achievements_path
           %li
-            %a Teams
+            = link_to 'Teams', teams_path
           - if current_user.admin?
             %li
               = link_to 'Grant an achievement', new_achievements_user_path

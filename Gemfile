@@ -8,6 +8,7 @@ end
 gem 'rails', '~> 5.0.1'
 
 gem 'cancancan'
+gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.2'
 gem 'devise-encryptable'

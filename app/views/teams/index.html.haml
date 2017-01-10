@@ -1,0 +1,19 @@
+%h1 Listing teams
+
+%table.table.table-striped.pretty
+  %thead
+    %tr
+      %th Name
+      %th{ colspan: 3 }
+  %tbody
+    - @teams.each do |team|
+      %tr
+        %td
+          %b= team.name
+        %td= link_to 'Show', team
+        %td= link_to 'Edit', edit_team_path(team) if can? :update, team
+        %td= link_to 'Remove', team, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, team
+
+%p= will_paginate @teams, renderer: BootstrapPagination::Rails
+
+= link_to 'New team', new_team_path, class: 'btn btn-primary' if can? :create, Team

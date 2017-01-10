@@ -12,7 +12,7 @@ class CreateTeams < ActiveRecord::Migration[5.0]
       t.uuid :user_id, null: false
       t.boolean :active, null: false, default: true
       t.timestamps null: false
-      t.index [:team_id, :user_id]
+      t.index [:team_id, :user_id], unique: true
       t.index :team_id
       t.index :user_id
     end

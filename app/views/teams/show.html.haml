@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    %h2= @team.name
+
+    %table.table.table-striped.pretty
+      %thead
+        %tr
+          %th Name
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.name
+
+= link_to 'Back', teams_path

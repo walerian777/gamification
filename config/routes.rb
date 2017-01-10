@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :achievements
   resources :achievements_users, only: [:new, :create, :destroy]
+  resources :teams
 
   get 'me', to: 'users#me'
 end

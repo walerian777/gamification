@@ -1,0 +1,16 @@
+.row
+  .col-md-6.col-md-offset-3
+    = simple_form_for @team do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :name, autofocus: true, required: true
+        %h3 Users
+        #teams_users
+          = f.simple_fields_for :teams_users do |teams_user|
+            = render 'teams_user_fields', f: teams_user
+          .links
+            = link_to_add_association f, :teams_users, class: 'btn btn-success' do
+              %i.fa.fa-plus
+              Add User
+      .form-actions
+        = f.button :submit, 'Save changes'
