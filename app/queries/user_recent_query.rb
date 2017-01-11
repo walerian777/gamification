@@ -9,6 +9,6 @@ class UserRecentQuery < BaseQuery
       .where(user_id: @user.id)
       .where(created_at: 7.days.ago..Time.current)
       .order(created_at: :desc)
-      .limit(10)
+      .limit(5)
   end
 end

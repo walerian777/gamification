@@ -32,5 +32,42 @@
               Teams
   .col-md-9
     .profile-content
-      = level_progressbar(@user)
-      = area_chart points_per_day_charts_path(user_id: @user.id), label: 'Experience', title: 'Experience gain per day'
+      .panel.panel-success
+        .panel-heading
+          %h3.panel-title
+            Expierience
+        .panel-body
+          = level_progressbar(@user)
+      .panel.panel-info
+        .panel-heading
+          %h3.panel-title
+            Achievements
+        .panel-body
+          .btn-group.btn-group-justified{ role: 'group'}
+            .btn.btn-default.nocursor
+              #{@user.achievements.gold.count}×
+              %i.fa.fa-trophy{ style: 'color: gold' }
+            .btn.btn-default.nocursor
+              #{@user.achievements.silver.count}×
+              %i.fa.fa-trophy{ style: 'color: silver' }
+            .btn.btn-default.nocursor
+              #{@user.achievements.bronze.count}×
+              %i.fa.fa-trophy{ style: 'color: saddlebrown' }
+
+          %table.table
+            %thead
+              %tr
+                %th
+                  Recent
+            %tbody
+              - @recent_achievements.each do |au|
+                %tr
+                  %td
+                    = au.achievement.name
+                    %i.fa.fa-trophy{ style: icon_style(au.achievement) }
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            Experience gain per day
+        .panel-body
+          = area_chart points_per_day_charts_path(user_id: @user.id), label: 'Experience'

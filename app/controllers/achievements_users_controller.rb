@@ -13,7 +13,7 @@ class AchievementsUsersController < ApplicationController
     @achievements_user = AchievementsUser.new(achievements_user_params)
     if @achievements_user.save
       flash[:notice] = 'Achievement granted!'
-      respond_with(@achievements_user.user)
+      redirect_to show_user_path(nickname: @achievements_user.user.nickname)
     else
       render action: :new
     end

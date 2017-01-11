@@ -8,6 +8,10 @@ class Achievement < ApplicationRecord
   has_many :achievements_users, dependent: :destroy
   has_many :users, through: :achievements_users
 
+  scope :gold, -> { where(rank: 'gold') }
+  scope :silver, -> { where(rank: 'silver') }
+  scope :bronze, -> { where(rank: 'bronze') }
+
   validates :name, :rank, :description, presence: true
   validates :name, :rank, :rewards, length: { maximum: 255 }
   validates :points,
