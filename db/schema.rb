@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110154712) do
+ActiveRecord::Schema.define(version: 20170111172818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,12 @@ ActiveRecord::Schema.define(version: 20170110154712) do
     t.boolean  "active",      default: true,     null: false
   end
 
-  create_table "achievements_users", id: false, force: :cascade do |t|
-    t.uuid     "achievement_id",                                       null: false
-    t.uuid     "user_id",                                              null: false
-    t.uuid     "id",             default: -> { "uuid_generate_v4()" }, null: false
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.boolean  "active",         default: true,                        null: false
+  create_table "achievements_users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "achievement_id",                null: false
+    t.uuid     "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "active",         default: true, null: false
     t.index ["achievement_id", "user_id"], name: "index_achievements_users_on_achievement_id_and_user_id", using: :btree
     t.index ["achievement_id"], name: "index_achievements_users_on_achievement_id", using: :btree
     t.index ["user_id"], name: "index_achievements_users_on_user_id", using: :btree
@@ -48,13 +47,12 @@ ActiveRecord::Schema.define(version: 20170110154712) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "teams_users", id: false, force: :cascade do |t|
-    t.uuid     "team_id",                                          null: false
-    t.uuid     "user_id",                                          null: false
-    t.uuid     "id",         default: -> { "uuid_generate_v4()" }, null: false
-    t.boolean  "active",     default: true,                        null: false
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+  create_table "teams_users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id",                   null: false
+    t.uuid     "user_id",                   null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["team_id", "user_id"], name: "index_teams_users_on_team_id_and_user_id", unique: true, using: :btree
     t.index ["team_id"], name: "index_teams_users_on_team_id", using: :btree
     t.index ["user_id"], name: "index_teams_users_on_user_id", using: :btree
