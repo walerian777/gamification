@@ -45,14 +45,14 @@
         .panel-body
           .btn-group.btn-group-justified{ role: 'group'}
             .btn.btn-default.nocursor
-              #{@user.achievements.gold.count}×
               %i.fa.fa-trophy{ style: 'color: gold' }
+              ×#{@user.achievements.gold.count}
             .btn.btn-default.nocursor
-              #{@user.achievements.silver.count}×
               %i.fa.fa-trophy{ style: 'color: silver' }
+              ×#{@user.achievements.silver.count}
             .btn.btn-default.nocursor
-              #{@user.achievements.bronze.count}×
               %i.fa.fa-trophy{ style: 'color: saddlebrown' }
+              ×#{@user.achievements.bronze.count}
 
           %table.table
             %thead
