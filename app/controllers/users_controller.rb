@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.active.find_by!(nickname: params[:nickname])
-    recent_query = UserRecentQuery.new(current_user)
+    recent_query = UserRecentQuery.new(@user)
     @recent_achievements = recent_query.call(AchievementsUser.all)
     @recent_teams = recent_query.call(TeamsUser.all)
     respond_with(@user)
