@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require cocoon
+//= require chartkick
 //= require turbolinks
 //= require_tree .

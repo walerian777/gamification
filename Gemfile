@@ -8,11 +8,13 @@ end
 gem 'rails', '~> 5.0.1'
 
 gem 'cancancan'
+gem 'chartkick'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.2'
 gem 'devise-encryptable'
 gem 'devise_invitable', '~> 1.7.0'
+gem 'groupdate'
 gem 'haml', '~> 4.0.7'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'

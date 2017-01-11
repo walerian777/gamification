@@ -1,9 +1,10 @@
 class LevelConverter
   EXPERIENCE_GAP = 121
 
-  def initialize(record)
+  def initialize(record, next_level: false)
     @experience = record.experience
     @level = record.level
+    @level += 1 if next_level
   end
 
   def convert

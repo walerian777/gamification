@@ -17,6 +17,22 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def progress_percentage
+    next_exp = experience_for_next_level
+    previous_exp = experience_for_current_level
+    percentage = (experience - previous_exp) / (next_exp - previous_exp) * 100
+    return 0 if percentage == 100
+    percentage.round(2)
+  end
+
+  def experience_for_current_level
+    LevelConverter.new(self).reverse
+  end
+
+  def experience_for_next_level
+    LevelConverter.new(self, next_level: true).reverse
+  end
+
   private
 
   def level_up

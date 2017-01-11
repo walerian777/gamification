@@ -2,19 +2,16 @@
   .col-md-3
     .profile-sidebar
       .profile-userpic
-        %img{ src: 'https://scontent.xx.fbcdn.net/v/t1.0-9/14479518_10211208281586721_352326340211134985_n.jpg?oh=c08aeb650cc0de77085b4d36109492c5&oe=59198A14', class: 'img-responsive' }
+        = image_tag('default_profile.jpg')
       .profile-usertitle
         .profile-usertitle-name
-          Anna Janicka
+          = @user.name
         .profile-usertitle-job
-          Key Account Manager
+          = @user.nickname
       .profile-userbuttons
-        %button.btn.btn-success.btn-sm{ type: 'button' }
-          %i.fa.fa-check
-          Follow
-        %button.btn.btn-danger.btn-sm{ type: 'button' }
-          %i.fa.fa-envelope
-          Message
+        .btn.btn-success.btn-sm
+          Level
+          = @user.level
       .profile-usermenu
         %ul.nav
           %li.active
@@ -35,4 +32,5 @@
               Teams
   .col-md-9
     .profile-content
-      Some user related content goes here...
+      = level_progressbar(@user)
+      = area_chart points_per_day_charts_path(user_id: @user.id), label: 'Experience', title: 'Experience gain per day'

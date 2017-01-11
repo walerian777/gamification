@@ -54,6 +54,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     cancancan (1.15.0)
+    chartkick (2.2.2)
     cocoon (1.2.9)
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -89,6 +90,8 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.1.1)
+      activesupport (>= 3)
     haml (4.0.7)
       tilt
     hashie (3.4.6)
@@ -259,6 +262,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   cancancan
+  chartkick
   cocoon
   coffee-rails (~> 4.2)
   database_cleaner
@@ -266,6 +270,7 @@ DEPENDENCIES
   devise-encryptable
   devise_invitable (~> 1.7.0)
   factory_girl_rails
+  groupdate
   haml (~> 4.0.7)
   jbuilder (~> 2.5)
   jquery-rails

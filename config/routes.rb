@@ -3,10 +3,17 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :users
+  resources :users, except: [:show]
   resources :achievements
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
 
   get 'me', to: 'users#me'
+  get '/u(sers)/:nickname', to: 'users#show', constraints: { nickname: %r{[^\/]+(?=\.html\z|\.json\z)|[^\/]+} }
+
+  resources :charts, only: [] do
+    collection do
+      get 'points_per_day'
+    end
+  end
 end
