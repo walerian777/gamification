@@ -33,6 +33,11 @@ class User < ApplicationRecord
     LevelConverter.new(self, next_level: true).reverse
   end
 
+  def after_database_authentication
+    return unless admin?
+    AdminLogger.log("Admin #{email} logged in.")
+  end
+
   private
 
   def level_up
