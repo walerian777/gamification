@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :achievements
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
+  namespace :leaderboards do
+    resource :users, only: [:index]
+    resource :teams, only: [:index]
+  end
 
   get 'me', to: 'users#me'
   get '/u(sers)/:nickname', to: 'users#show', as: :show_user, constraints: { nickname: %r{[^\/]+(?=\.html\z|\.json\z)|[^\/]+} }

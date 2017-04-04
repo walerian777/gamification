@@ -5,12 +5,13 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.active.order(:created_at)
                  .paginate(page: params[:page], per_page: 10)
+    respond_with(@teams)
   end
 
   def show
     @team = Team.active.find(params[:id])
     @users = @team.users.active.order(:last_name)
-    respond_with(@teams)
+    respond_with(@team)
   end
 
   def new

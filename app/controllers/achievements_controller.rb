@@ -5,11 +5,12 @@ class AchievementsController < ApplicationController
   def index
     @achievements = Achievement.active.order(:created_at)
                                .paginate(page: params[:page], per_page: 10)
+    respond_with(@achievements)
   end
 
   def show
     @achievement = Achievement.active.find(params[:id])
-    respond_with(@achievements)
+    respond_with(@achievement)
   end
 
   def new
