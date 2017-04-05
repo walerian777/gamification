@@ -32,8 +32,7 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap'
 
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~>3.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
