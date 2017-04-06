@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Rankable
   devise :invitable, :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :validatable, :confirmable, :encryptable,
          :omniauthable
