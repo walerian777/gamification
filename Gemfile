@@ -24,6 +24,8 @@ gem 'omniauth'
 # gem 'omniauth-linkedin'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
+gem 'redis', '~>3.2'
+gem 'redis-objects'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
@@ -31,8 +33,6 @@ gem 'turbolinks', '~> 5'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate-bootstrap'
-
-gem 'redis', '~>3.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
