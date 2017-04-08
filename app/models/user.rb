@@ -14,6 +14,8 @@ class User < ApplicationRecord
   before_save :level_up, if: proc { |a| a.experience_changed? || a.new_record? }
   before_create :assign_nickname
 
+  alias_attribute :points, :experience
+
   def name
     "#{first_name} #{last_name}"
   end
