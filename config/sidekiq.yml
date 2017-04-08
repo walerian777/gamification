@@ -1,0 +1,11 @@
+defaults: &defaults
+  :concurrency: 1
+  :logfile: './log/sidekiq.log'
+  :queues:
+    - default
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

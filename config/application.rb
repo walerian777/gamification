@@ -24,6 +24,7 @@ module Gamification
     Rails.application.configure do
       config.autoload_paths << "#{config.root}/lib"
       config.eager_load_paths << "#{config.root}/lib"
+      config.active_job.queue_adapter = :sidekiq
     end
   end
 end

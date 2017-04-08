@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'home#home'
 
@@ -20,4 +22,6 @@ Rails.application.routes.draw do
       get 'points_per_day'
     end
   end
+
+  mount Sidekiq::Web, at: 'jobs'
 end

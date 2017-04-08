@@ -27,11 +27,14 @@ gem 'puma', '~> 3.0'
 gem 'redis', '~>3.2'
 gem 'redis-objects'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
+gem 'sidekiq-client-cli'
 gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'whenever', require: false
 gem 'will_paginate-bootstrap'
 
 # Use Capistrano for deployment
