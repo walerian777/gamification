@@ -9,30 +9,34 @@ module Leaderboards
     end
 
     def call
-      @users = User.active
-      @users = @users.order(order)
-      @users = @users.page(@params[:page])
+      start, stop = indices
+      rank_name = "#{@params[:period]}_rank"
+      scores = select_scores(start, stop, rank_name)
+      users_with_scores(scores)
     end
 
     private
 
+    def indices
+      page = @params[:page] - 1
+      start = page * 10
+      stop = start + 9
+      [start, stop]
+    end
+
+    def select_scores(start, stop, rank_name)
+      User.send(rank_name).revrange(start, stop, with_scores: true)
+    end
+
+    def users_with_scores(scores)
+      Hash[scores.map { |id, score| [User.find(id), score] }]
+    end
+
     def default_params
       {
         page: 1,
-        order: 'experience_desc'
+        period: 'daily'
       }
-    end
-
-    def order
-      order_hash.fetch(@params[:order], experience: :desc)
-    end
-
-    def order_hash
-      Hash[order_columns.map { |c| [c, c.to_sym] } + order_columns.map { |c| ["#{c}_desc", { c => :desc }] }]
-    end
-
-    def order_columns
-      %w(created_at experience first_name last_name level).freeze
     end
   end
 end
