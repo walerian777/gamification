@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
   namespace :leaderboards do
-    resource :users, only: [:index]
-    resource :teams, only: [:index]
+    resources :users, only: :index
   end
 
   get 'me', to: 'users#me'
