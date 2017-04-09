@@ -1,0 +1,16 @@
+%h1 Top users today
+
+%table.table.table-striped.pretty
+  %thead
+    %tr
+      %th Rank
+      %th{ colspan: 3 } User
+      %th Experience
+  %tbody
+    - @users_with_scores.each_with_index do |(user, score), i|
+      %tr
+        %td
+          - page = params[:page] || 1
+          %b= i + 1 + 10 * (page - 1)
+        %td{ colspan: 3 }= user.name
+        %td= score
