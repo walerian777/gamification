@@ -12,10 +12,28 @@ module Rankable
     sorted_set(:all_time_rank, global: true)
   end
 
+  private
+
   def update_ranks
-    self.class.daily_rank.increment(self.id, points - points_was)
-    self.class.weekly_rank.increment(self.id, points - points_was)
-    self.class.monthly_rank.increment(self.id, points - points_was)
-    self.class.all_time_rank.increment(self.id, points - points_was)
+    update_daily_rank
+    update_weekly_rank
+    update_monthly_rank
+    update_all_time_rank
+  end
+
+  def update_daily_rank
+    self.class.daily_rank.increment(id, points - points_was)
+  end
+
+  def update_weekly_rank
+    self.class.weekly_rank.increment(id, points - points_was)
+  end
+
+  def update_monthly_rank
+    self.class.monthly_rank.increment(id, points - points_was)
+  end
+
+  def update_all_time_rank
+    self.class.all_time_rank.increment(id, points - points_was)
   end
 end
