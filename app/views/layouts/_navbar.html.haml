@@ -10,13 +10,11 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         - if user_signed_in?
-          %li
-            = link_to 'Achievements', achievements_path
-          %li
-            = link_to 'Teams', teams_path
+          %li= link_to 'Leaderboard', leaderboards_users_path
+          %li= link_to 'Achievements', achievements_path
+          %li= link_to 'Teams', teams_path
           - if current_user.admin?
-            %li
-              = link_to 'Grant an achievement', new_achievements_user_path
+            %li= link_to 'Grant an achievement', new_achievements_user_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           - if user_signed_in?
@@ -24,13 +22,9 @@
               Account
               %span.caret
             %ul.dropdown-menu{ role: 'menu' }
-              %li
-                = link_to 'Profile', me_path
-              %li
-                = link_to 'Settings', edit_user_registration_path
+              %li= link_to 'Profile', me_path
+              %li= link_to 'Settings', edit_user_registration_path
               %li.divider
-              %li
-                = link_to 'Log out', destroy_user_session_path, method: :delete
+              %li= link_to 'Log out', destroy_user_session_path, method: :delete
           - else
-            %li
-              = link_to 'Log in', new_user_session_path
+            %li= link_to 'Log in', new_user_session_path
