@@ -65,13 +65,12 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default charset: 'utf-8'
   config.action_mailer.smtp_settings = {
-    address: 'domains015.home.pl',
-    port: 587,
-    domain: ENV['EMAIL_DOMAIN'],
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: ENV['EMAIL_USERNAME'],
-    password: ENV['EMAIL_PASSWORD']
+    address: ENV['MAILGUN_SMTP_SERVER'],
+    port: ENV['MAILGUN_SMTP_PORT'],
+    user_name: ENV['MAILGUN_SMTP_LOGIN'],
+    password: ENV['MAILGUN_SMTP_PASSWORD'],
+    domain: 'gamification-uj.herokuapp.com',
+    authentication: :plain
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
