@@ -1,12 +1,15 @@
 require 'redis'
 require 'redis/objects'
 
-if Rails.env.test? || Rails.env.development? || ENV['REDIS_URL'].present?
+if Rails.env.production?
+  redis_url = ENV['REDIS_URL']
+  redis = Redis.new(url: redis_url) if redis_url.present?
+else
   REDIS_CONFIG = YAML.load(File.open(Rails.root.join('config/redis.yml')))
   config = REDIS_CONFIG[Rails.env].symbolize_keys
 
   redis = Redis.new(config)
   Redis::Objects.redis = redis
-end
 
-redis.flushdb if Rails.env.test?
+  redis.flushdb if Rails.env.test?
+end
