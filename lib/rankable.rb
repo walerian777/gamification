@@ -1,7 +1,7 @@
 module Rankable
   extend ActiveSupport::Concern
 
-  PERIODS = %w(daily weekly monthly all_time)
+  PERIODS = %w(daily weekly monthly all_time).freeze
 
   included do
     include Redis::Objects
