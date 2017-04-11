@@ -61,16 +61,10 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'gamification-uj.herokuapp.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default charset: 'utf-8'
-  config.action_mailer.smtp_settings = {
-    address: ENV['MAILGUN_SMTP_SERVER'],
-    port: ENV['MAILGUN_SMTP_PORT'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD'],
-    domain: 'gamification-uj.herokuapp.com',
-    authentication: :plain
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAILGUN_API_KEY'],
+    domain: 'gamification-uj.herokuapp.com'
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
