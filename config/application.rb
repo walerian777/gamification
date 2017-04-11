@@ -25,7 +25,6 @@ module Gamification
       config.autoload_paths << "#{config.root}/lib"
       config.eager_load_paths << "#{config.root}/lib"
       config.active_job.queue_adapter = :sidekiq
-      config.serve_static_assets = true
     end
   end
 end
