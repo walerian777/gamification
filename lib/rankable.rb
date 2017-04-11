@@ -6,7 +6,7 @@ module Rankable
   included do
     include Redis::Objects
 
-    before_save :update_ranks, if: proc { |a| a.points_changed? || a.new_record? }
+    before_save :update_ranks, if: proc { |a| a.points_changed? }
 
     sorted_set(:daily_rank, global: true)
     sorted_set(:weekly_rank, global: true)
