@@ -1,4 +1,4 @@
-describe Leaderboards::Users do
+describe Leaderboards::Users, redis: true do
   describe '#call' do
     it 'returns ordered users' do
       worst_user = FactoryGirl.create(:user, experience: 100)
@@ -6,8 +6,8 @@ describe Leaderboards::Users do
       FactoryGirl.create(:user, experience: 200)
       results = Leaderboards::Users.call
       expect(results.length).to eql(3)
-      expect(results.first).to eql(best_user)
-      expect(results.last).to eql(worst_user)
+      expect(results.keys.first).to eql(best_user)
+      expect(results.keys.last).to eql(worst_user)
     end
   end
 end

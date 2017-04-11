@@ -42,7 +42,9 @@ gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.5', require: 'rspec/rails'
+  gem 'rspec-redis_helper'
 end
 
 group :development do

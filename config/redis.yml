@@ -4,12 +4,12 @@ default: &default
 
 development:
   <<: *default
-  db: gamification_development
+  db: 0
 
 test:
   <<: *default
-  db: gamification_test
+  db: 1
 
 production:
   <<: *default
-  db: gamification_production
+  db: 2

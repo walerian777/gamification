@@ -10,6 +10,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include RSpec::RedisHelper, redis: true
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -20,6 +21,12 @@ RSpec.configure do |config|
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.around(:each, redis: true) do |example|
+    with_clean_redis do
       example.run
     end
   end
