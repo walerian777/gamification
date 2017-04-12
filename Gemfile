@@ -8,6 +8,7 @@ end
 
 gem 'rails', '~> 5.0.1'
 
+gem 'awesome_rails_console'
 gem 'cancancan'
 gem 'chartkick'
 gem 'cocoon'
@@ -50,7 +51,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'awesome_rails_console'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'
