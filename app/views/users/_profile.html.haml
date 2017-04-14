@@ -2,6 +2,7 @@
   .panel-heading
     %h3.panel-title= user.first_name
   .panel-body
-    .btn.btn-success.btn-sm
-      Top #{user.monthly_top}% this month
+    - if user.monthly_top.present?
+      .btn.btn-success.btn-sm
+        Top #{user.monthly_top}% this month
 .panel.panel-info
