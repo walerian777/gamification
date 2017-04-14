@@ -16,3 +16,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 .env
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]

@@ -7,7 +7,6 @@ class UserRecentQuery < BaseQuery
     relation
       .where(active: true)
       .where(user_id: @user.id)
-      .where(created_at: 7.days.ago..Time.current)
       .order(created_at: :desc)
       .limit(5)
   end

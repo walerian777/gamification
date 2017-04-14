@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, except: [:show] do
     member do
       get 'activity'
+      get 'profile'
     end
   end
   resources :achievements

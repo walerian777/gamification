@@ -1,26 +1,25 @@
-.profile-sidebar
-  .profile-userpic= image_tag('default_profile.jpg')
-  .profile-usertitle
-    .profile-usertitle-name= @user.name
-    .profile-usertitle-job= @user.nickname
-  .profile-userbuttons
-    .btn.btn-success.btn-sm Level #{@user.level}
-  .profile-usermenu
-    %ul.nav
-      %li.active
-        = link_to activity_user_path(@user), remote: true do
-          %i.fa.fa-line-chart
-          Activity
-      %li
-        %a{ href: '#' }
-          %i.fa.fa-user
-          Profile
-      %li
-        %a{ href: '#' }
-          %i.fa.fa-trophy
-          Achievements
-      %li
-        %a{ href: '#' }
-          %i.fa.fa-group
-          Teams
+.profile-userpic= image_tag('default_profile.jpg')
+.profile-usertitle
+  .profile-usertitle-name= @user.name
+  .profile-usertitle-job= @user.nickname
+.profile-userbuttons
+  .btn.btn-success.btn-sm Level #{@user.level}
+.profile-usermenu
+  %ul.nav
+    %li.active
+      = link_to activity_user_path(@user), remote: true do
+        %i.fa.fa-line-chart
+        Activity
+    %li
+      = link_to profile_user_path(@user), remote: true do
+        %i.fa.fa-user
+        Profile
+    %li
+      %a{ href: '#' }
+        %i.fa.fa-trophy
+        Achievements
+    %li
+      %a{ href: '#' }
+        %i.fa.fa-group
+        Teams
 
