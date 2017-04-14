@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       get 'activity'
       get 'profile'
+      get 'achievements'
+      get 'teams'
     end
   end
   resources :achievements

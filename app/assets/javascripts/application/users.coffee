@@ -2,6 +2,7 @@ class Application.Users
   constructor: ->
 
   render: ->
+    $('li.active a').click()
     $('.profile-usermenu a').on('click', @onSidebarLinkClick)
 
   onSidebarLinkClick: (event) ->

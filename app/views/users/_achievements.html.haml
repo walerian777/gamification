@@ -1,0 +1,6 @@
+.panel.panel-success
+  .panel-heading
+    %h3.panel-title
+      = user.id == current_user.id ? 'You have collected' : "#{user.first_name} has collected"
+      %span.badge= user.achievements_count
+      achievements

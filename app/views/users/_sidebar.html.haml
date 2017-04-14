@@ -15,7 +15,7 @@
         %i.fa.fa-user
         Profile
     %li
-      %a{ href: '#' }
+      = link_to achievements_user_path(@user), remote: true do
         %i.fa.fa-trophy
         Achievements
     %li

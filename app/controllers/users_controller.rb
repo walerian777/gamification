@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   respond_to :html
   load_and_authorize_resource
-  before_action :set_user_profile, only: [:activity, :profile]
+  before_action :set_user_profile, only: [:activity, :profile, :achievements]
 
   def me
     redirect_to user_path(current_user.nickname)
@@ -19,6 +19,12 @@ class UsersController < ApplicationController
   end
 
   def profile
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def achievements
     respond_to do |format|
       format.js
     end
