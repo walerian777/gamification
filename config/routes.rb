@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :users, except: [:show]
+  resources :users, except: [:show] do
+    member do
+      get 'activity'
+    end
+  end
   resources :achievements
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
