@@ -1,6 +1,26 @@
-.panel.panel-success
+.panel.panel-info
   .panel-heading
     %h3.panel-title
       = user.id == current_user.id ? 'You have collected' : "#{user.first_name} has collected"
       %span.badge= user.achievements_count
       achievements
+  .panel-body
+    .btn-group.btn-group-justified{ role: 'group'}
+      .btn.btn-default.nocursor
+        %i.fa.fa-trophy{ style: 'color: gold' }
+        ×#{user.achievements.gold.count}
+      .btn.btn-default.nocursor
+        %i.fa.fa-trophy{ style: 'color: silver' }
+        ×#{user.achievements.silver.count}
+      .btn.btn-default.nocursor
+        %i.fa.fa-trophy{ style: 'color: saddlebrown' }
+        ×#{user.achievements.bronze.count}
+    %br
+    - user.grouped_achievements.each_slice(3) do |achievements|
+      .row
+        - achievements.each do |achievement, count|
+          .col-md-offset-1.col-md-3.col-md-offset-1
+            = link_to achievement_path(achievement) do
+              %p.text-center
+                %i.fa.fa-trophy.fa-5x{ style: icon_style(achievement) }
+              %p.text-center #{achievement.name} ×#{count}

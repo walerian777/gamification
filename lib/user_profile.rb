@@ -15,6 +15,12 @@ class UserProfile
     result
   end
 
+  def grouped_achievements
+    user.achievements_users.active.group(:achievement_id).count.map do |id, count|
+      [Achievement.find(id), count]
+    end.to_h
+  end
+
   private
 
   def method_missing(method_name)
