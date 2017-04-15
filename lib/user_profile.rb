@@ -21,6 +21,10 @@ class UserProfile
     end.to_h
   end
 
+  def teams
+    user.teams.where('teams_users.active = true').order('teams_users.created_at DESC')
+  end
+
   private
 
   def method_missing(method_name)

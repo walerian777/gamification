@@ -1,0 +1,7 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Teams
+  .panel-body
+    %ul.list-group
+      - user.teams.each do |team|
+        %li.list-group-item= link_to team.name, team_path(team)

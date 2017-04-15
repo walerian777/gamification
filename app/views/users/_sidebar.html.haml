@@ -19,7 +19,7 @@
         %i.fa.fa-trophy
         Achievements
     %li
-      %a{ href: '#' }
+      = link_to teams_user_path(@user), remote: true do
         %i.fa.fa-group
         Teams
 
