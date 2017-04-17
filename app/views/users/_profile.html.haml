@@ -7,8 +7,9 @@
       - if user.monthly_top.present?
         .pull-right Top #{user.monthly_top}% this month
   .panel-body
-    %p= user.about_me
-    %hr
+    - if user.about_me
+      %p= user.about_me
+      %hr
     %ul.blank
       - if user.location
         %li
@@ -17,9 +18,10 @@
       %li
         %i.fa.fa-history
         Member for #{time_ago_in_words(user.created_at)}
-      %li
-        %i.fa.fa-eye
-        Last seen #{time_ago_in_words(user.last_seen_at)} ago
+      - if user.last_seen_at
+        %li
+          %i.fa.fa-eye
+          Last seen #{time_ago_in_words(user.last_seen_at)} ago
       - if user.website
         %li
           %i.fa.fa-link
