@@ -2,26 +2,33 @@
   .panel-heading
     %h3.panel-title
       = user.first_name
+      - if user.position
+        \- #{user.position}
       - if user.monthly_top.present?
         .pull-right Top #{user.monthly_top}% this month
   .panel-body
     %p= user.about_me
+    %hr
     %ul.blank
-      %li
-        %i.fa.fa-map-marker
-        = user.location
+      - if user.location
+        %li
+          %i.fa.fa-map-marker
+          = user.location
       %li
         %i.fa.fa-history
         Member for #{time_ago_in_words(user.created_at)}
       %li
         %i.fa.fa-eye
         Last seen #{time_ago_in_words(user.last_seen_at)} ago
-      %li
-        %i.fa.fa-link
-        = link_to user.website, user.website_link
-      %li
-        %i.fa.fa-twitter
-        = link_to "@#{user.twitter}", user.twitter_link
-      %li
-        %i.fa.fa-github
-        = link_to user.github, user.github_link
+      - if user.website
+        %li
+          %i.fa.fa-link
+          = link_to user.website, user.website_link
+      - if user.twitter
+        %li
+          %i.fa.fa-twitter
+          = link_to "@#{user.twitter}", user.twitter_link
+      - if user.github
+        %li
+          %i.fa.fa-github
+          = link_to user.github, user.github_link
