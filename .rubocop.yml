@@ -10,6 +10,9 @@ AssignmentInCondition:
 MethodLength:
   Max: 50
 
+Style/RegexpLiteral:
+  Enabled: false
+
 AllCops:
   Excludes:
     - db/**/*

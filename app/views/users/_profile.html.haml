@@ -1,7 +1,27 @@
 .panel.panel-success
   .panel-heading
-    %h3.panel-title= user.first_name
+    %h3.panel-title
+      = user.first_name
+      - if user.monthly_top.present?
+        .pull-right Top #{user.monthly_top}% this month
   .panel-body
-    - if user.monthly_top.present?
-      .btn.btn-success.btn-sm Top #{user.monthly_top}% this month
-.panel.panel-info
+    %p= user.about_me
+    %ul.blank
+      %li
+        %i.fa.fa-map-marker
+        = user.location
+      %li
+        %i.fa.fa-history
+        Member for #{time_ago_in_words(user.created_at)}
+      %li
+        %i.fa.fa-eye
+        Last seen #{time_ago_in_words(user.last_seen_at)} ago
+      %li
+        %i.fa.fa-link
+        = link_to user.website, user.website_link
+      %li
+        %i.fa.fa-twitter
+        = link_to "@#{user.twitter}", user.twitter_link
+      %li
+        %i.fa.fa-github
+        = link_to user.github, user.github_link

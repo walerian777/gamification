@@ -25,6 +25,19 @@ class UserProfile
     user.teams.where('teams_users.active = true').order('teams_users.created_at DESC')
   end
 
+  def website_link
+    return user.website if user.website =~ /^https?:\/\/\w+/
+    "http://#{user.website}"
+  end
+
+  def twitter_link
+    "https://twitter.com/@#{user.twitter}"
+  end
+
+  def github_link
+    "https://github.com/#{user.github}"
+  end
+
   private
 
   def method_missing(method_name)
@@ -55,6 +68,6 @@ class UserProfile
   end
 
   def relation_count(relation_name)
-    @user.send(relation_name).try(:active).try(:count)
+    user.send(relation_name).try(:active).try(:count)
   end
 end
