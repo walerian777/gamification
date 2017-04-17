@@ -5,17 +5,49 @@
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
       .form-inputs
-        = f.input :first_name, autofocus: true
-        = f.input :last_name
-        = f.input :email
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          %div
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
-        = f.input :password, autocomplete: 'off', placeholder: 'leave blank if you don\'t want to change it'
-        = f.input :password_confirmation, autocomplete: 'off'
-        = f.input :current_password, autocomplete: 'off', placeholder: 'we need your current password to confirm your changes'
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Public information
+          .panel-body
+            = f.input :first_name, autofocus: true
+            = f.input :last_name
+            = f.input :location, wrapper: :vertical_input_group do
+              %span.input-group-addon
+                %i.fa.fa-map-marker
+              = f.input_field :location, class: 'form-control'
+            = f.input :email, wrapper: :vertical_input_group do
+              %span.input-group-addon
+                %i.fa.fa-envelope
+              = f.input_field :email, class: 'form-control'
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %div
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+            = f.input :about_me, input_html: { rows: 5 }
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Web presence
+          .panel-body
+            = f.input :website, label: 'Website link', wrapper: :vertical_input_group do
+              %span.input-group-addon
+                %i.fa.fa-link
+              = f.input_field :website, class: 'form-control'
+            = f.input :twitter, label: 'Twitter username', wrapper: :vertical_input_group do
+              %span.input-group-addon
+                %i.fa.fa-twitter
+              = f.input_field :twitter, class: 'form-control'
+            = f.input :github, label: 'Github username', wrapper: :vertical_input_group do
+              %span.input-group-addon
+                %i.fa.fa-github
+              = f.input_field :github, class: 'form-control'
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Private information
+          .panel-body
+            = f.input :password, autocomplete: 'off', placeholder: 'leave blank if you don\'t want to change it'
+            = f.input :password_confirmation, autocomplete: 'off'
+            = f.input :current_password, autocomplete: 'off', placeholder: 'we need your current password to confirm your changes'
       .form-actions
-        = f.button :submit, 'Update'
+        = f.button :submit, 'Save changes', class: 'btn btn-info btn-primary'
 
     %h2 Unhappy?
     = button_to 'Delete my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-warning btn-primary'
