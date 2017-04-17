@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
   namespace :leaderboards do
-    resources :users, only: :index
+    resources :users, only: :index do
+      get 'fetch', on: :collection
+    end
   end
 
   get 'me', to: 'users#me'

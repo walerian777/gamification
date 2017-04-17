@@ -1,7 +1,6 @@
 .col-md-3
   %h1 Top users
-  = form_tag leaderboards_users_path, method: :get do
+  = form_tag fetch_leaderboards_users_path, method: :get, remote: true do
     .form-inputs
-      = select_tag :period, options_for_select(@periods, params[:period]), class: 'form-control', onchange: 'this.form.submit();'
-
-= render 'users'
+      = select_tag :period, options_for_select(@periods, params[:period]), class: 'form-control', onchange: '$(this.form).submit()'
+#list
