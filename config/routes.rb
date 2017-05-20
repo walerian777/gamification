@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   root 'home#home'
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
 
   resources :users, except: [:show] do
     member do

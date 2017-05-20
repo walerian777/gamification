@@ -5,4 +5,5 @@
 //= require chartkick
 //= require turbolinks
 //= require init
+//= require cable
 //= require_tree ./application
