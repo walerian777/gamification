@@ -3,7 +3,7 @@ class NotificationBroadcastJob < ApplicationJob
 
   def perform(notification_id)
     notification = Notification.find(notification_id)
-    ActionCable.server.broadcast("activity_channel", message: render_notification(notification))
+    ActionCable.server.broadcast("activity_channel_#{notification.user_id}", message: render_notification(notification))
   end
 
   private
