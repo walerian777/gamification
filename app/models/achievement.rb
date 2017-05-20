@@ -7,6 +7,7 @@ class Achievement < ApplicationRecord
 
   has_many :achievements_users, dependent: :destroy
   has_many :users, through: :achievements_users
+  has_many :notifications, as: :notificable
 
   scope :gold, -> { where(rank: 'gold') }
   scope :silver, -> { where(rank: 'silver') }

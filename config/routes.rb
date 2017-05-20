@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :achievements
   resources :achievements_users, only: [:new, :create, :destroy]
   resources :teams
+  resources :notifications, only: [:index]
   namespace :leaderboards do
     resources :users, only: :index do
       get 'fetch', on: :collection
@@ -31,5 +32,6 @@ Rails.application.routes.draw do
     end
   end
 
+  mount ActionCable.server => '/cable'
   mount Sidekiq::Web, at: 'jobs'
 end

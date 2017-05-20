@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :achievements, through: :achievements_users
   has_many :teams_users, dependent: :destroy
   has_many :teams, through: :teams_users
+  has_many :notifications
 
   validates :first_name, :last_name, presence: true
 
