@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170519125921) do
   create_table "notifications", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid     "user_id",                         null: false
     t.string   "notificable_type"
-    t.integer  "notificable_id"
+    t.uuid     "notificable_id"
     t.string   "message"
     t.boolean  "seen"
     t.boolean  "active",           default: true, null: false
