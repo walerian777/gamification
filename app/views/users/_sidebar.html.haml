@@ -8,18 +8,18 @@
   %ul.nav
     %li.active
       = link_to activity_user_path(@user), remote: true do
-        %i.fa.fa-line-chart
+        %i.fa.fa-line-chart.fa-fw
         Activity
     %li
       = link_to profile_user_path(@user), remote: true do
-        %i.fa.fa-user
+        %i.fa.fa-user.fa-fw
         Profile
     %li
       = link_to achievements_user_path(@user), remote: true do
-        %i.fa.fa-trophy
+        %i.fa.fa-trophy.fa-fw
         Achievements
     %li
       = link_to teams_user_path(@user), remote: true do
-        %i.fa.fa-group
+        %i.fa.fa-group.fa-fw
         Teams
 

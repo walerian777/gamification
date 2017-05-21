@@ -1,2 +1,4 @@
-.notification
-  #{notification.created_at.to_formatted_s(:short)}: #{notification.message} #{notificable_link(notification)}
+%tr.notification
+  %td
+    .small #{notification.created_at.to_formatted_s(:short)}
+    #{notification.message} #{notificable_link(notification)}

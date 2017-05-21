@@ -36,6 +36,10 @@ class User < ApplicationRecord
     LevelConverter.new(self, next_level: true).reverse
   end
 
+  def notifications_count
+    notifications.active.unseen.count
+  end
+
   private
 
   def level_up

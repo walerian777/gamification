@@ -4,7 +4,7 @@ class CreateNotifications < ActiveRecord::Migration[5.0]
       t.uuid :user_id, null: false
       t.references :notificable, type: :uuid, polymorphic: true, index: true
       t.string :message
-      t.boolean :seen
+      t.boolean :seen, null: false, default: false
       t.boolean :active, null: false, default: true
       t.timestamps
     end
