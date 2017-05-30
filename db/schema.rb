@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 20170519125921) do
   end
 
   create_table "notifications", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid     "user_id",                         null: false
+    t.uuid     "user_id",                          null: false
     t.string   "notificable_type"
     t.uuid     "notificable_id"
     t.string   "message"
-    t.boolean  "seen"
-    t.boolean  "active",           default: true, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "seen",             default: false, null: false
+    t.boolean  "active",           default: true,  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["notificable_type", "notificable_id"], name: "index_notifications_on_notificable_type_and_notificable_id", using: :btree
   end
 
