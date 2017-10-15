@@ -57,7 +57,7 @@ end
          when 2 then 'gold'
          end
   achievement = Achievement.create!(
-    name: FFaker::Movie.name,
+    name: FFaker::Movie.title,
     description: faked_description,
     rank: rank,
     rewards: rand(10).zero? ? nil : faked_reward
