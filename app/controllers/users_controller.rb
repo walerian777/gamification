@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   respond_to :html
   load_and_authorize_resource
+  skip_authorize_resource only: [:activity, :profile, :achievements, :teams]
   before_action :set_user_profile, only: [:activity, :profile, :achievements, :teams]
-  before_action :authorize_user_profile, only: [:activity, :profile, :achievements, :teams]
 
   def me
     redirect_to user_path(current_user.nickname)
@@ -42,9 +42,5 @@ class UsersController < ApplicationController
   def set_user_profile
     user = User.find(params[:id])
     @user_profile = UserProfile.new(user)
-  end
-
-  def authorize_user_profile
-    authorize! :read, User
   end
 end
